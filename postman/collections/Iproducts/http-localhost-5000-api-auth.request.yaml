@@ -1,0 +1,5 @@
+$kind: http-request
+name: http://localhost:5000/api/auth
+url: http://localhost:5000/api/auth
+method: GET
+order: 1000

@@ -1,0 +1,20 @@
+$kind: http-request
+name: http://localhost:5000/api/auth/GetUser
+url: http://localhost:5000/api/auth/GetUser
+method: GET
+headers:
+  auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjliZDM0OWRhNDA0ZTNkOWUyODEyYmE2In0sImlhdCI6MTc3NDAwOTY4Nn0.r7mTXgOM-DcjxnP77mqd6SxzAwS2XryMeLkmxjAgGVI
+body:
+  type: json
+  content: "{\r
+
+    \"name\": \"adarsh\",\r
+
+    \"email\": \"adarsh@yahoo.com\",\r
+
+    \"password\":\"xyz123\"\r
+
+    }"
+auth:
+  type: noauth
+order: 4000

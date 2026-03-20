@@ -1,0 +1,11 @@
+$kind: http-request
+name: http://localhost:5000/api/products/FetchAllProductsByUser
+url: http://localhost:5000/api/products/FetchAllProductsByUser
+method: GET
+headers:
+  auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjliZDM0OWRhNDA0ZTNkOWUyODEyYmE2In0sImlhdCI6MTc3NDAwOTY4Nn0.r7mTXgOM-DcjxnP77mqd6SxzAwS2XryMeLkmxjAgGVI
+queryParams:
+  - key: auth-token
+    value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjliZDM0OWRhNDA0ZTNkOWUyODEyYmE2In0sImlhdCI6MTc3NDAwOTY4Nn0.r7mTXgOM-DcjxnP77mqd6SxzAwS2XryMeLkmxjAgGVI
+    disabled: true
+order: 8000
