@@ -76,7 +76,7 @@ router.post('/CreateUser', [
                 }
             };
             const token = jwt.sign(data, JWT_SECRET);
-            res.status(200).json({ success: true, message: "Login successful!", token });
+            res.status(200).json({ success: true, message: "Login successful!", token,user: user.name });   
         } catch (error) {
             console.error(error.message);
             res.status(500).send("Internal Server Error");
