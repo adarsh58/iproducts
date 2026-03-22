@@ -17,6 +17,17 @@ const ProductState = (props) => {
         const data=await response.json();
         setProducts(data);
     }
+    const getProductsbyUser=async()=>{
+        const response=await fetch(`${host}/api/products/FetchAllProductsByUser`,{
+            method:'GET',
+            headers:{
+                'Content-Type':'application/json',
+                'auth-token':localStorage.getItem('token')
+            }
+        });
+        const data=await response.json();
+        setProducts(data);
+    }
 
     const addProduct=async(title, description, price)=>{
         const response=await fetch(`${host}/api/products/AddProduct`,{
@@ -47,7 +58,7 @@ const ProductState = (props) => {
 
 
   return (
-    <ProductContext.Provider value={{products, getProducts, addProduct, deleteProduct}}>
+    <ProductContext.Provider value={{products, getProducts, addProduct, deleteProduct,getProductsbyUser}}>
       { props.children }
     </ProductContext.Provider>
   )

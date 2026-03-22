@@ -41,13 +41,14 @@ router.post('/AddProduct', fetchuser, [
         return res.status(400).json({ errors: errors.array() });
     }
     try {
-        const { id, title, description, price } = req.body;
+        const { id, title, description, price ,img} = req.body;
         const product = new products({
             user: req.user.id,
             id,
             title,
             description,
-            price
+            price,
+            img
         });
         const savedProduct = await product.save();
         res.json(savedProduct);
