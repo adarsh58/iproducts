@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import ProductContext from './ProductContext';
 
 const ProductState = (props) => {
@@ -7,7 +7,7 @@ const ProductState = (props) => {
     const [products, setProducts] = React.useState(intialProducts);
     const [allproducts, setAllProducts] = React.useState(intialProducts);
 
-    const getProducts = async () => {
+    const getProducts = useCallback(async () => {
         const response = await fetch(`${host}/api/products/fetchallproducts`, {
             method: 'GET',
             headers: {
@@ -19,8 +19,8 @@ const ProductState = (props) => {
         // from dummyjson API, value is { products: [...] }
 
         setAllProducts(Array.isArray(data) ? data : data.products || []);
-    }
-    const getProductsbyUser = async () => {
+    }, [])
+    const getProductsbyUser = useCallback(async () => {
         const response = await fetch(`${host}/api/products/FetchAllProductsByUser`, {
             method: 'GET',
             headers: {
@@ -30,9 +30,9 @@ const ProductState = (props) => {
         });
         const data = await response.json();
         setProducts(data);
-    }
+    }, [])
 
-    const addProduct = async (id, title, description, price, img) => {
+    const addProduct = useCallback(async (id, title, description, price, img) => {
 
         const response = await fetch(`${host}/api/products/AddProduct`, {
             method: 'POST',
@@ -51,9 +51,9 @@ const ProductState = (props) => {
         }
 
         setProducts(products.concat(data));
-    }
+    }, [products])
 
-    const fetchProductbyId = async (id) => {
+    const fetchProductbyId = useCallback(async (id) => {
         const response = await fetch(`${host}/api/products/FetchProductsById?id=${id}`, {
             method: 'GET',
             headers: {
@@ -65,9 +65,9 @@ const ProductState = (props) => {
 
         return data;
 
-    }
+    }, [])
 
-    const deleteProduct = async (id) => {
+    const deleteProduct = useCallback(async (id) => {
         const response = await fetch(`${host}/api/products/DeleteProduct?id=${id}`, {
             method: 'DELETE',
             headers: {
@@ -78,7 +78,7 @@ const ProductState = (props) => {
         await response.json();
         const newProducts = products.filter((product) => { return product._id !== id });
         setProducts(newProducts);
-    }
+    }, [products])
 
 
 

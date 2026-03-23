@@ -9,7 +9,7 @@ const Home = () => {
 
     useEffect(() => {
         getProductsbyUser();
-    }, []);
+    }, [getProductsbyUser]);
 
     const addProducthandler = async (id, title, description, price, img) => {
 
