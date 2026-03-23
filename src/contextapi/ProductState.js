@@ -75,7 +75,7 @@ const ProductState = (props) => {
                 'auth-token': localStorage.getItem('token')
             }
         });
-        const data = await response.json();
+        await response.json();
         const newProducts = products.filter((product) => { return product._id !== id });
         setProducts(newProducts);
     }
