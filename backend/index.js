@@ -6,7 +6,12 @@ connectToMongo();
 const app = express()
 const port = 5000
 app.use(express.json()); 
-app.use(cors())
+
+app.use(cors({
+  origin: 'https://iproducts-two.vercel.app',
+  methods: ['GET','POST','PUT','DELETE','OPTIONS'],
+  credentials: true
+}));
 app.use('/api/auth', require('./Route/Auth'))
 app.use('/api/products', require('./Route/Products'))
 
