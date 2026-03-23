@@ -1,6 +1,12 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
+const Navbar = () => {
+    let navigate = useNavigate();
+    const Logout = () => {
+        localStorage.removeItem('token')
+        navigate('/');
+    }
 
-const navbar = () => {
     return (
         <div>
             <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -17,6 +23,11 @@ const navbar = () => {
                             <li className="nav-item">
                                 <a className="nav-link" href="#">About</a>
                             </li>
+                            {localStorage.getItem('token') ? <li className="nav-item">
+                                <a className="nav-link" href="#" onClick={()=>Logout()}>Logout</a>
+                            </li> : <li className="nav-item">
+                                <a className="nav-link" href="#">Login</a>
+                            </li>}
                         </ul>
                     </div>
                 </div>
@@ -25,4 +36,4 @@ const navbar = () => {
     )
 }
 
-export default navbar
+export default Navbar

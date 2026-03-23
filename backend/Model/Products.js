@@ -12,8 +12,8 @@ const ProductSchema = new Schema({
     },
     title:{
         type: String,
-        required: true,
-        unique: true
+        required: true
+        // Removed unique constraint to allow duplicate products
     },
     description:{
         type: String,
