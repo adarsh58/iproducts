@@ -1,7 +1,7 @@
 import React from 'react'
 
 const productcard = (props) => {
-  const { id,title, description, price, img } = props;
+  const { id,title, description,price, img } = props;
   return (
     <div className='container'>
       <div className="card mb-3" style={{ maxWidth: '540px' }}>
@@ -13,6 +13,7 @@ const productcard = (props) => {
       <div className="card-body">
         <h5 className="card-title">{title}</h5>
         <p className="card-text">{description}</p>
+        <p className="card-text"><strong>Price: </strong>{price}</p>
         <p className="card-text"><small className="text-body-secondary">Last updated 3 mins ago</small></p>
         <i className="bi bi-trash3" onClick={() => props.deleteProduct(id)}></i>
       </div>

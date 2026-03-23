@@ -5,9 +5,6 @@ import ProductContext from '../contextapi/ProductContext';
 const AddProducts = ({ addProduct: addProductFromProps }) => {
 
   const { allproducts, getProducts, fetchProductbyId, addProduct } = React.useContext(ProductContext);
-
-
-  // no fetch on mount here; Home already handles user products fetch.
   useEffect(() => {
     getProducts();
     if (allproducts) {
