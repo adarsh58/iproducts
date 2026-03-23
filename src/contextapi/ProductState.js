@@ -2,7 +2,7 @@ import React from 'react'
 import ProductContext from './ProductContext';
 
 const ProductState = (props) => {
-    const host = "http://localhost:5000";
+    const host = "iproducts-two.vercel.app";
     const intialProducts = [];
     const [products, setProducts] = React.useState(intialProducts);
     const [allproducts, setAllProducts] = React.useState(intialProducts);
