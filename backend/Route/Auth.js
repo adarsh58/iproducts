@@ -5,7 +5,7 @@ const User = require('../Model/User');
 const { body, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const JWT_SECRET = "iproductsapp";
+const JWT_SECRET = process.env.JWT_SECRET || "iproductsapp";
 
 
 // TESTING API -http://localhost:5000/api/auth/
