@@ -11,7 +11,7 @@ const Login = () => {
     const {email, password } = credentials;
     if (email && password) {
 
-      const response = await fetch('http://iproducts-two.vercel.app/api/auth/LoginUser', {
+      const response = await fetch('https://iproducts-two.vercel.app/api/auth/LoginUser', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
