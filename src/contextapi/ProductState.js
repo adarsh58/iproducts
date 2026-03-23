@@ -3,6 +3,8 @@ import ProductContext from './ProductContext';
 
 const ProductState = (props) => {
     const host = "https://iproducts-two.vercel.app";
+    // https://iproducts-two.vercel.app http://localhost:5000
+    
     const intialProducts = [];
     const [products, setProducts] = React.useState(intialProducts);
     const [allproducts, setAllProducts] = React.useState(intialProducts);
@@ -80,10 +82,34 @@ const ProductState = (props) => {
         setProducts(newProducts);
     }, [products])
 
+    const loginUser = useCallback(async (email, password) => {
+        console.log('loginUser called with:', { email, password });
+       try {
+         const response = await fetch(`${host}/api/auth/LoginUser`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email, password })
+        });
+        console.log('Response from login API:', response);
+        const data = await response.json();
+          return data;
+       } catch (error ) {
+        console.error('Error during login:', error);
+        return { success: false, message: 'Login failed due to network error' };
+        
+       }
+    
+      
+
+    }
+        , [])
+
 
 
     return (
-        <ProductContext.Provider value={{ products, allproducts, getProducts, addProduct, deleteProduct, getProductsbyUser, fetchProductbyId }}>
+        <ProductContext.Provider value={{ products, allproducts, getProducts, addProduct, deleteProduct, getProductsbyUser, fetchProductbyId,loginUser }}>
             {props.children}
         </ProductContext.Provider>
     )

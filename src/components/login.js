@@ -1,8 +1,10 @@
 import React,{useState} from 'react'
 import { useNavigate } from 'react-router-dom';
+import ProductContext from '../contextapi/ProductContext';
 
 const Login = () => {
   let navigate = useNavigate();
+  const { loginUser } = React.useContext(ProductContext);
   const [credentials, setCredentials] = useState({
     email: '',
     password: ''
@@ -10,15 +12,8 @@ const Login = () => {
   const Submit = async () => {
     const {email, password } = credentials;
     if (email && password) {
-
-      const response = await fetch('https://iproducts-two.vercel.app/api/auth/LoginUser', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(credentials)
-      })
-      const data = await response.json();
+      console.log('credentials',credentials);
+      const data =await loginUser(email, password);
       if (data.success) {
         localStorage.setItem('token', data.token);
         localStorage.setItem('user', data.user);
@@ -27,9 +22,6 @@ const Login = () => {
       else {
         alert('Invalid credentials')
       }
-
-
-
     }
     else {
       alert('Please fill all the fields')
