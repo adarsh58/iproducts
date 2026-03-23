@@ -2,7 +2,7 @@ import React, { useCallback } from 'react'
 import ProductContext from './ProductContext';
 
 const ProductState = (props) => {
-    const host = "iproducts-two.vercel.app";
+    const host = "https://iproducts-two.vercel.app";
     const intialProducts = [];
     const [products, setProducts] = React.useState(intialProducts);
     const [allproducts, setAllProducts] = React.useState(intialProducts);
