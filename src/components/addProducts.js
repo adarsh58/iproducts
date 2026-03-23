@@ -15,7 +15,6 @@ const AddProducts = ({ addProduct: addProductFromProps }) => {
   }, []);
 
   const handleCategorySelect = (data) => {
-    console.log('Selected category:', data);
     fetchProductbyId(data).then(product => {
 
       const insertProduct = addProductFromProps || addProduct;
