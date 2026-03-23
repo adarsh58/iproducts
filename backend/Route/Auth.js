@@ -85,8 +85,8 @@ router.post('/CreateUser', [
             console.log('token',token);
             res.status(200).json({ success: true, message: "Login successful!", token,user: user.name });   
         } catch (error) {
-            console.error('catch',error.message);
-            res.status(500).send("Internal Server Error");
+            console.error('catch', error.message, error);
+            res.status(500).json({ success: false, message: 'Internal Server Error', error: error.message });
         }
     });
 
