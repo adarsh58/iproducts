@@ -56,29 +56,36 @@ router.post('/CreateUser', [
         body('password', 'Password cannot be blank').exists()
     ], async (req, res) => {
         // If there are errors, return Bad request and the errors
+        console.log(req.body);
         const errors = validationResult(req);   
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() });
         }
+        console.log('success validation');
         const { email, password } = req.body;
         try {
             let user = await User.findOne({ email });
+            console.log('user ', user);
             if (!user) {
                 return res.status(400).json({ error: "Please try to login with correct credentials" });
             }
             const isPasswordMatch = await bcrypt.compare(password, user.password);
+             console.log('isPasswordMatch ', isPasswordMatch);
             if (!isPasswordMatch) {
                 return res.status(400).json({ error: "Please try to login with correct credentials" });
             }
+            console.log('isPasswordMatch end ');
             const data = {
                 user: {
                     id: user.id
                 }
             };
+             console.log('data',data);
             const token = jwt.sign(data, JWT_SECRET);
+            console.log('token',token);
             res.status(200).json({ success: true, message: "Login successful!", token,user: user.name });   
         } catch (error) {
-            console.error(error.message);
+            console.error('catch',error.message);
             res.status(500).send("Internal Server Error");
         }
     });
