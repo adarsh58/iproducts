@@ -7,8 +7,6 @@ const AddProducts = ({ addProduct: addProductFromProps }) => {
   const { allproducts, getProducts, fetchProductbyId, addProduct } = React.useContext(ProductContext);
   useEffect(() => {
     getProducts();
-    if (allproducts) {
-    }
   }, []);
 
   const handleCategorySelect = (data) => {
