@@ -1,5 +1,5 @@
 const { verify } = require('jsonwebtoken');
-const JWT_SECRET = "iproductsapp";
+const JWT_SECRET = process.env.JWT_SECRET || "iproductsapp";
 
 const fetchuser = (req, res, next) => {
   // Implementation for fetching user
