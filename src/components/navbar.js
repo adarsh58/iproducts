@@ -24,7 +24,7 @@ const Navbar = () => {
                                 <a className="nav-link" href="/about">About</a>
                             </li>
                             {localStorage.getItem('token') ? <li className="nav-item">
-                                <a className="nav-link" href="#" onClick={()=>Logout()}>Logout</a>
+                                <a className="nav-link" href="/login" onClick={()=>Logout()}>Logout</a>
                             </li> : <li className="nav-item">
                                 <a className="nav-link" href="/login">Login</a>
                             </li>}

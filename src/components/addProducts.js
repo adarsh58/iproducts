@@ -7,7 +7,7 @@ const AddProducts = ({ addProduct: addProductFromProps }) => {
   const { allproducts, getProducts, fetchProductbyId, addProduct } = React.useContext(ProductContext);
   useEffect(() => {
     getProducts();
-  }, []);
+  }, [getProducts]);
 
   const handleCategorySelect = (data) => {
     fetchProductbyId(data).then(product => {
